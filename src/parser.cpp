@@ -36,7 +36,7 @@ Expr Number::parse(Assoc &env) {
 }
 
 Expr RationalSyntax::parse(Assoc &env) {
-    //TODO: complete the rational parser
+    return Expr(new RationalNum(numerator, denominator));
 }
 
 Expr SymbolSyntax::parse(Assoc &env) {
@@ -66,6 +66,7 @@ Expr List::parse(Assoc &env) {
     SymbolSyntax *id = dynamic_cast<SymbolSyntax*>(stxs[0].get());
     if (id == nullptr) {
         //TODO: TO COMPLETE THE LOGIC
+        throw RuntimeError("First element of list must be a symbol for now");
     }else{
     string op = id->s;
     if (find(op, env).get() != nullptr) {
@@ -84,10 +85,13 @@ Expr List::parse(Assoc &env) {
             }
         } else if (op_type == E_MINUS) {
             //TODO: TO COMPLETE THE LOGIC
+            throw RuntimeError("Minus not fully implemented");
         } else if (op_type == E_MUL) {
             //TODO: TO COMPLETE THE LOGIC
+            throw RuntimeError("Mult not fully implemented");
         }  else if (op_type == E_DIV) {
             //TODO: TO COMPLETE THE LOGIC
+            throw RuntimeError("Div not fully implemented");
         } else if (op_type == E_MODULO) {
             if (parameters.size() != 2) {
                 throw RuntimeError("Wrong number of arguments for modulo");
@@ -97,20 +101,26 @@ Expr List::parse(Assoc &env) {
             return Expr(new ListFunc(parameters));
         } else if (op_type == E_LT) {
             //TODO: TO COMPLETE THE LOGIC
+            throw RuntimeError("LT not fully implemented");
         } else if (op_type == E_LE) {
             //TODO: TO COMPLETE THE LOGIC
+            throw RuntimeError("LE not fully implemented");
         } else if (op_type == E_EQ) {
             //TODO: TO COMPLETE THE LOGIC
+            throw RuntimeError("EQ not fully implemented");
         } else if (op_type == E_GE) {
             //TODO: TO COMPLETE THE LOGIC
+            throw RuntimeError("GE not fully implemented");
         } else if (op_type == E_GT) {
             //TODO: TO COMPLETE THE LOGIC
+            throw RuntimeError("GT not fully implemented");
         } else if (op_type == E_AND) {
             return Expr(new AndVar(parameters));
         } else if (op_type == E_OR) {
             return Expr(new OrVar(parameters));
         } else {
             //TODO: TO COMPLETE THE LOGIC
+            throw RuntimeError("Primitive not fully implemented");
         }
     }
 
@@ -124,5 +134,6 @@ Expr List::parse(Assoc &env) {
 
     //default: use Apply to be an expression
     //TODO: TO COMPLETE THE PARSER LOGIC
+    throw RuntimeError("List parsing failed");
 }
 }

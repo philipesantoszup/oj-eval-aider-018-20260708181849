@@ -58,6 +58,7 @@ Value Binary::eval(Assoc &e) { // evaluation of two-operators primitive
 
 Value Variadic::eval(Assoc &e) { // evaluation of multi-operator primitive
     // TODO: TO COMPLETE THE VARIADIC CLASS
+    throw RuntimeError("Variadic eval not implemented");
 }
 
 Value Var::eval(Assoc &e) { // evaluation of variable
@@ -137,18 +138,22 @@ Value Modulo::evalRator(const Value &rand1, const Value &rand2) { // modulo
 
 Value PlusVar::evalRator(const std::vector<Value> &args) { // + with multiple args
     //TODO: To complete the addition logic
+    throw RuntimeError("PlusVar not implemented");
 }
 
 Value MinusVar::evalRator(const std::vector<Value> &args) { // - with multiple args
     //TODO: To complete the substraction logic
+    throw RuntimeError("MinusVar not implemented");
 }
 
 Value MultVar::evalRator(const std::vector<Value> &args) { // * with multiple args
     //TODO: To complete the multiplication logic
+    throw RuntimeError("MultVar not implemented");
 }
 
 Value DivVar::evalRator(const std::vector<Value> &args) { // / with multiple args
     //TODO: To complete the divisor logic
+    throw RuntimeError("DivVar not implemented");
 }
 
 Value Expt::evalRator(const Value &rand1, const Value &rand2) { // expt
@@ -246,50 +251,62 @@ Value Greater::evalRator(const Value &rand1, const Value &rand2) { // >
 
 Value LessVar::evalRator(const std::vector<Value> &args) { // < with multiple args
     //TODO: To complete the less logic
+    throw RuntimeError("LessVar not implemented");
 }
 
 Value LessEqVar::evalRator(const std::vector<Value> &args) { // <= with multiple args
     //TODO: To complete the lesseq logic
+    throw RuntimeError("LessEqVar not implemented");
 }
 
 Value EqualVar::evalRator(const std::vector<Value> &args) { // = with multiple args
     //TODO: To complete the equal logic
+    throw RuntimeError("EqualVar not implemented");
 }
 
 Value GreaterEqVar::evalRator(const std::vector<Value> &args) { // >= with multiple args
     //TODO: To complete the greatereq logic
+    throw RuntimeError("GreaterEqVar not implemented");
 }
 
 Value GreaterVar::evalRator(const std::vector<Value> &args) { // > with multiple args
     //TODO: To complete the greater logic
+    throw RuntimeError("GreaterVar not implemented");
 }
 
 Value Cons::evalRator(const Value &rand1, const Value &rand2) { // cons
     //TODO: To complete the cons logic
+    throw RuntimeError("Cons not implemented");
 }
 
 Value ListFunc::evalRator(const std::vector<Value> &args) { // list function
     //TODO: To complete the list logic
+    throw RuntimeError("ListFunc not implemented");
 }
 
 Value IsList::evalRator(const Value &rand) { // list?
     //TODO: To complete the list? logic
+    throw RuntimeError("IsList not implemented");
 }
 
 Value Car::evalRator(const Value &rand) { // car
     //TODO: To complete the car logic
+    throw RuntimeError("Car not implemented");
 }
 
 Value Cdr::evalRator(const Value &rand) { // cdr
     //TODO: To complete the cdr logic
+    throw RuntimeError("Cdr not implemented");
 }
 
 Value SetCar::evalRator(const Value &rand1, const Value &rand2) { // set-car!
     //TODO: To complete the set-car! logic
+    throw RuntimeError("SetCar not implemented");
 }
 
 Value SetCdr::evalRator(const Value &rand1, const Value &rand2) { // set-cdr!
    //TODO: To complete the set-cdr! logic
+   throw RuntimeError("SetCdr not implemented");
 }
 
 Value IsEq::evalRator(const Value &rand1, const Value &rand2) { // eq?
@@ -344,69 +361,85 @@ Value IsString::evalRator(const Value &rand) { // string?
 
 Value Begin::eval(Assoc &e) {
     //TODO: To complete the begin logic
+    throw RuntimeError("Begin not implemented");
 }
 
 Value Quote::eval(Assoc& e) {
     //TODO: To complete the quote logic
+    throw RuntimeError("Quote not implemented");
 }
 
 Value AndVar::eval(Assoc &e) { // and with short-circuit evaluation
     //TODO: To complete the and logic
+    throw RuntimeError("AndVar not implemented");
 }
 
 Value OrVar::eval(Assoc &e) { // or with short-circuit evaluation
     //TODO: To complete the or logic
+    throw RuntimeError("OrVar not implemented");
 }
 
 Value Not::evalRator(const Value &rand) { // not
     //TODO: To complete the not logic
+    throw RuntimeError("Not not implemented");
 }
 
 Value If::eval(Assoc &e) {
     //TODO: To complete the if logic
+    throw RuntimeError("If not implemented");
 }
 
 Value Cond::eval(Assoc &env) {
     //TODO: To complete the cond logic
+    throw RuntimeError("Cond not implemented");
 }
 
 Value Lambda::eval(Assoc &env) { 
     //TODO: To complete the lambda logic
+    throw RuntimeError("Lambda not implemented");
 }
 
 Value Apply::eval(Assoc &e) {
     if (rator->eval(e)->v_type != V_PROC) {throw RuntimeError("Attempt to apply a non-procedure");}
 
     //TODO: TO COMPLETE THE CLOSURE LOGIC
-    Procedure* clos_ptr = ;
+    Procedure* clos_ptr = nullptr;
     
     //TODO: TO COMPLETE THE ARGUMENT PARSER LOGIC
     std::vector<Value> args;
-    if (auto varNode = dynamic_cast<Variadic*>(clos_ptr->e.get())) {
-        //TODO
+    if (clos_ptr) {
+        Variadic* varNode = dynamic_cast<Variadic*>(clos_ptr->e.get());
+        if (varNode) {
+            //TODO
+        }
     }
-    if (args.size() != clos_ptr->parameters.size()) throw RuntimeError("Wrong number of arguments");
+    if (clos_ptr && args.size() != clos_ptr->parameters.size()) throw RuntimeError("Wrong number of arguments");
     
     //TODO: TO COMPLETE THE PARAMETERS' ENVIRONMENT LOGIC
-    Assoc param_env = ;
+    Assoc param_env = empty();
 
-    return clos_ptr->e->eval(param_env);
+    if (clos_ptr) return clos_ptr->e->eval(param_env);
+    throw RuntimeError("Apply failed");
 }
 
 Value Define::eval(Assoc &env) {
     //TODO: To complete the define logic
+    throw RuntimeError("Define not implemented");
 }
 
 Value Let::eval(Assoc &env) {
     //TODO: To complete the let logic
+    throw RuntimeError("Let not implemented");
 }
 
 Value Letrec::eval(Assoc &env) {
     //TODO: To complete the letrec logic
+    throw RuntimeError("Letrec not implemented");
 }
 
 Value Set::eval(Assoc &env) {
     //TODO: To complete the set logic
+    throw RuntimeError("Set not implemented");
 }
 
 Value Display::evalRator(const Value &rand) { // display function
